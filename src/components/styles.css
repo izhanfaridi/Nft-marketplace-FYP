@@ -1,0 +1,24 @@
+.desc-div{
+    display: none;
+}
+
+.bg-div:hover .desc-div{
+    display: block;
+    animation-name: slide-top;
+    animation-duration: 0.4s;
+    animation-timing-function: ease-out;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-fill-mode: none;
+    animation-play-state: running;
+    backdrop-filter: blur(2px) brightness(0.5);
+}
+
+@keyframes slide-top {
+    0% {
+      transform: translateY(-70px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
