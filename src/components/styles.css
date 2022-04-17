@@ -14,6 +14,15 @@
     backdrop-filter: blur(2px) brightness(0.5);
 }
 
+.gradient-css-div{
+  background-image: linear-gradient(to bottom, #90cef400,#98ffe0, #90cef400);
+}
+.gradient-css-div-2{
+  background-image: linear-gradient(to bottom, #90cef400,#fff67d, #90cef400);
+}
+
+
+
 @keyframes slide-top {
     0% {
       transform: translateY(-70px);
