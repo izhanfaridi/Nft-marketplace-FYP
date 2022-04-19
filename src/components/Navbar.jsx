@@ -1,10 +1,17 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState , useEffect} from "react";
+import { Link, useLocation, withRouter } from "react-router-dom";
 import { Transition } from "@headlessui/react";
 
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [render , setRender] = useState();
+  const location = useLocation
+  useEffect(() => {
+    console.log(location)
+  }, [location])
+  
+
   const navElements=[
     {
       name: 'Explore',
@@ -55,9 +62,9 @@ function Navbar() {
                   <button className="border-solid rounded bg-teal-500 px-3 py-1 font-medium text-white hover:bg-teal-700 ">
                     Sign Up
                   </button>
-                  <button className="border-solid rounded bg-white px-3 py-1 font-medium text-teal-500 ring-1 ring-teal-500 hover:bg-gray-700 hover:ring-gray-800 ">
+                  <Link to='/login'><button className="border-solid rounded bg-white px-3 py-1 font-medium text-teal-500 ring-1 ring-teal-500 hover:bg-gray-700 hover:ring-gray-800 ">
                     Sign In
-                  </button>
+                  </button></Link>
                 </div>
               </div>
             </div>

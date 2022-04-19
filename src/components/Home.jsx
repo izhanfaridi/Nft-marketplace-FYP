@@ -3,10 +3,12 @@ import nft_gif from "../imgs/nft-gif.gif";
 import Card from './HomeComponents/TrendingCards'
 import News from './HomeComponents/News'
 import Footer from './HomeComponents/Footer'
+import Navbar from "./Navbar";
 
 const Home = () => {
   return (
     <>
+      <Navbar></Navbar>
       <div className="shadow-none w-full h-80 bg-gradient-to-b from-blue-200 to-transparent flex justify-around flex-wrap items-center">
         <div className="h-full lg:w-2/3 lg:px-16 md:w-3/5 md:px-8 sm:px-4 sm:w-3/5 xs:w-2/5 flex items-center whitespace-pre-line">
           <p className="font-bold break-words whitespace-pre-line lg:text-5xl md:text-3xl sm:text-3xl ">
