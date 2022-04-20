@@ -1,11 +1,11 @@
 import React, { useState , useEffect} from "react";
-import { Link, useLocation, withRouter } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Transition } from "@headlessui/react";
+import siteLogo from "../imgs/site-logo1.png"
 
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [render , setRender] = useState();
   const location = useLocation
   useEffect(() => {
     console.log(location)
@@ -41,9 +41,9 @@ function Navbar() {
           <div className="flex-shrink-0">
             <Link to="/">
               <img
-                className="h-8 w-8"
-                src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-                alt="Workflow"
+                className="h-16 w-full"
+                src={siteLogo}
+                alt="Nft Gate"
               />
             </Link>
           </div>

@@ -31,7 +31,7 @@ const News = () => {
         <h1 className="text-center lg:py-20 md:py-12 sm:py-6 xs:py-6 font-extrabold lg:text-4xl md:text-3xl sm:text-2xl xs:text-xl text-red-500 underline decoration-4 underline-offset-8">
           News From The NFT World
         </h1>
-        <div className="flex sm:flex-row xs:flex-col sm:justify-center xs:items-center sm:h-80 xs:h-screen">
+        <div className="flex sm:flex-row xs:flex-col sm:justify-center xs:items-center sm:h-80">
           {newsData.map((e) => (
             <div
               style={{ backgroundImage: `url(${e.image})` }}
@@ -47,7 +47,7 @@ const News = () => {
           ))}
         </div>
         <div className="flex justify-center">
-          <button className="lg:mt-12 lg:mb-8  xs:my-6 font-medium rounded-md ring ring-2 ring-red-500 bg-red-500 text-gray-100 hover:bg-red-600 xs:text-base  sm:text-lg lg:text-xl lg:p-1.5 xs:p-1">
+          <button className="lg:mt-12 lg:mb-8  xs:my-3 font-medium rounded-md ring ring-2 ring-red-500 bg-red-500 text-gray-100 hover:bg-red-600 xs:text-base  sm:text-lg lg:text-xl lg:p-1.5 xs:p-1">
             See More -&gt;
           </button>
         </div>
