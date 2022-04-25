@@ -59,9 +59,9 @@ function Navbar() {
                   ))}
 
 
-                  <button className="border-solid rounded bg-teal-500 px-3 py-1 font-medium text-white hover:bg-teal-700 ">
+                  <Link to='/register'><button className="border-solid rounded bg-teal-500 px-3 py-1 font-medium text-white hover:bg-teal-700 ">
                     Sign Up
-                  </button>
+                  </button></Link>
                   <Link to='/login'><button className="border-solid rounded bg-white px-3 py-1 font-medium text-teal-500 ring-1 ring-teal-500 hover:bg-gray-700 hover:ring-gray-800 ">
                     Sign In
                   </button></Link>
