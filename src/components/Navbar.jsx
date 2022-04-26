@@ -6,12 +6,7 @@ import siteLogo from "../imgs/site-logo1.png"
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const location = useLocation
-  useEffect(() => {
-    console.log(location)
-  }, [location])
   
-
   const navElements=[
     {
       name: 'Explore',
