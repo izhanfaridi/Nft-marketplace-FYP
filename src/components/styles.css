@@ -21,9 +21,11 @@
   background-image: linear-gradient(to bottom, #90cef400,#fff67d, #90cef400);
 }
 .gradient-css-div-explore{
-  /* background-image: linear-gradient(to bottom left, #90cef400,#9bffc1, #90cef400 ); */
   background-image: linear-gradient(to bottom, #90cef400,#fff895,#fff895, #90cef400);
+}
 
+.gradient-css-div-details{
+  background-image: linear-gradient(to top right, #90cef400,#90cef400,#d2fff1, #90cef400);
 }
 
 

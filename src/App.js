@@ -5,13 +5,16 @@ import Home from './components/Home'
 import Explore from './components/Explore'
 import Login from './components/Login'
 import Register from './components/Register';
+import NftDetails from './components/NftDetails';
 
 function App() {
   return (
     <div>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
-        <Route path='/explore' element={<Explore></Explore>}></Route>
+        <Route path='/explore' element={<Explore></Explore>}>
+        </Route>
+          <Route path="/explore/:nftId" element={<NftDetails/>}/>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
       </Routes>
