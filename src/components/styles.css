@@ -39,8 +39,8 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
 .details-div{
-  background: rgba(152, 255, 224, 0.466);
-box-shadow: 0 8px 32px 0 rgba(93, 146, 130, 0.466);
+  background: rgba(255, 255, 255, 0.466);
+box-shadow: 0 2px 16px 0 rgba(93, 146, 130, 0.466);
 backdrop-filter: blur( 4px );
 -webkit-backdrop-filter: blur( 4px );
 }
