@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useLocation } from "react-router-dom";
 import nfts from "./Data";
 import Navbar from "./Navbar";
@@ -15,67 +15,34 @@ const NftDetails = () => {
   const location = useLocation();
   const [nft, setNFT] = useState({});
   const [response, setResponse] = useState();
-  const [chartData, setChartData] = useState([]);
-  const [tempData, setTempData] = useState({});
   const id = location.pathname.split("/")[2];
   const today = new Date()
   const priorDate = new Date(new Date().setDate(today.getDate() - 30));
   const startDateApi = priorDate.getFullYear() +"-"+ (priorDate.getMonth()+1)+"-"+ priorDate.getDate()
-  let data = {
-    x: 0,
-    y: 1,
-  }
+  let arr = []
+
+
+
   const options = {
     animationEnabled: true,
     exportEnabled: true,
-    theme: "dark2", // "light1", "dark1", "dark2"
+    theme: "light2", // "light1", "dark1", "dark2"
     title:{
-      text: "Ethereum Price Chart For Last 30 Days (in USD)"
+      text: "ETH Value For The Past 30 Days (In USD)"
     },
     axisY: {
       title: "Price",
-      suffix: "USD"
+      suffix: "$"
     },
     axisX: {
       title: "Date",
       prefix: "",
-      interval: 2
+      interval: 1
     },
     data: [{
       type: "line",
-      toolTipContent: "Date: {x}, {y}%",
-      dataPoints: [
-        { x: 1, y: 64 },
-        { x: 2, y: 61 },
-        { x: 3, y: 64 },
-        { x: 4, y: 62 },
-        { x: 5, y: 64 },
-        { x: 6, y: 60 },
-        { x: 7, y: 58 },
-        { x: 8, y: 59 },
-        { x: 9, y: 53 },
-        { x: 10, y: 54 },
-        { x: 11, y: 61 },
-        { x: 12, y: 60 },
-        { x: 13, y: 55 },
-        { x: 14, y: 60 },
-        { x: 15, y: 56 },
-        { x: 16, y: 60 },
-        { x: 17, y: 59.5 },
-        { x: 18, y: 63 },
-        { x: 19, y: 58 },
-        { x: 20, y: 54 },
-        { x: 21, y: 59 },
-        { x: 22, y: 64 },
-        { x: 23, y: 59 },
-        { x: 24, y: 75 },
-        { x: 25, y: 59 },
-        { x: 26, y: 49},
-        { x: 27, y: 59 },
-        { x: 28, y: 64 },
-        { x: 29, y: 50 },
-        { x: 30, y: 43 },
-      ]
+      toolTipContent: "{x}: {y} $",
+      dataPoints: arr
     }]
   }
 
@@ -84,32 +51,32 @@ const NftDetails = () => {
 
     const fetchData = async() =>{
       const res = await axios("https://data.messari.io/api/v1/assets/ethereum/metrics/price/time-series?start="+startDateApi+"&interval=1d")
-      console.log(res)
       setResponse(res)
     }
     
 
 
-    fetchData()
     
     nfts.map((item) => {
       if (item.id === id) {
         setNFT(item);
       }
     })
-
+    
+    fetchData()
   }, [id])
 
-  useEffect(()=>{
+  useMemo(()=>{
     response && response.data.data.values.map((e)=>{
+      const date = new Date(e[0])
+      const usdRounded = Math.round(e[4] * 100) / 100;
+      arr.push({ x: date, y: usdRounded });
       
-      setChartData([...chartData , {x:e[0] , y:e[4]} ])        
-        console.log(chartData)
-
+      
     })
-
+    
   },[response])
-
+  
 
   return (
     <>
@@ -148,8 +115,8 @@ const NftDetails = () => {
               <button className="bg-cyan-500 py-1 w-40 h-10 rounded-lg mb-4 mt-2 text-lg font-semibold text-white hover:bg-cyan-600"><IoWalletOutline className="inline w-6 h-6 mr-2 mb-1" />Buy Now</button>
               <button className="bg-white py-1 w-56 h-10 rounded-lg mb-4 ml-3 mt-2 text-lg font-semibold ring ring-1 ring-cyan-500 hover:ring-cyan-600 hover:ring-2"><BsBookmarkHeart className="inline w-6 h-6 mr-2 mb-1" />Add To Favourites</button>
               </div>
-              <div>
-                <CanvasJSChart options = {options}/>
+              <div className="mt-5 p-1 rounded-lg bg-zinc-800 ring-1 ring-zinc-800">
+                <CanvasJSChart options = {options} />
               </div>
           </div>
         </div>
