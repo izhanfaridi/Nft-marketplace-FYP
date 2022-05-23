@@ -14,14 +14,17 @@ const NftDetails = () => {
   var CanvasJSChart = CanvasJSReact.CanvasJSChart;
   const location = useLocation();
   const [nft, setNFT] = useState({});
-  const [response, setResponse] = useState({});
+  const [response, setResponse] = useState();
   const [chartData, setChartData] = useState([]);
   const [tempData, setTempData] = useState({});
   const id = location.pathname.split("/")[2];
   const today = new Date()
   const priorDate = new Date(new Date().setDate(today.getDate() - 30));
   const startDateApi = priorDate.getFullYear() +"-"+ (priorDate.getMonth()+1)+"-"+ priorDate.getDate()
- 
+  let data = {
+    x: 0,
+    y: 1,
+  }
   const options = {
     animationEnabled: true,
     exportEnabled: true,
@@ -85,20 +88,27 @@ const NftDetails = () => {
       setResponse(res)
     }
     
-    fetchData()
 
+
+    fetchData()
+    
     nfts.map((item) => {
-      if (item.id == id) {
+      if (item.id === id) {
         setNFT(item);
       }
     })
 
-    response && response.data.data.values.map((e)={
+  }, [id])
+
+  useEffect(()=>{
+    response && response.data.data.values.map((e)=>{
       
-      // setChartData([...chartData , ])
+      setChartData([...chartData , {x:e[0] , y:e[4]} ])        
+        console.log(chartData)
+
     })
 
-  }, [id,response])
+  },[response])
 
 
   return (
