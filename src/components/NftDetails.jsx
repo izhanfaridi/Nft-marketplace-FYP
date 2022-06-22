@@ -7,6 +7,8 @@ import { IoWalletOutline } from 'react-icons/io5'
 import { BsBookmarkHeart } from 'react-icons/bs'
 import axios from 'axios'
 import CanvasJSReact from '../canvasjs.react';
+import { prominent } from 'color.js'
+
 
 
 const NftDetails = () => {
@@ -77,6 +79,10 @@ const NftDetails = () => {
     
   },[response])
   
+  nft && 
+  prominent(nft.image, { amount: 1 }).then(color => {
+    console.log(color) // [241, 221, 63]
+  })
 
   return (
     <>

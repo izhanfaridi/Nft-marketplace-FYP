@@ -39,14 +39,14 @@ const nfts = [
       title: "Scholar Owl #3452",
       creator: "Owl Moods Collection",
       image: img5,
-      price: "0.0.0082",
+      price: "0.00082",
     },
     {
       id:"06",
       title: "Space Pirates #356",
       creator: "Space Pirates Collection",
       image: img6,
-      price: "0.0.008",
+      price: "0.0008",
     },
   ];
 
