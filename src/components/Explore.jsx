@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "./Navbar";
 import { NavLink } from "react-router-dom";
 import nfts from "./Data";
+import Footer from "./HomeComponents/Footer";
 
 const Explore = () => {
   
@@ -50,6 +51,8 @@ const Explore = () => {
         </div>
         <br />
       </div>
+      <hr />
+      <Footer></Footer>
     </>
   );
 };
