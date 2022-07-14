@@ -18,6 +18,7 @@ const NftDetails = () => {
   const location = useLocation();
   const [nft, setNFT] = useState({});
   const [color, setColor] = useState([]);
+  const [dominant, setDominant] = useState();
   const [response, setResponse] = useState();
   const id = location.pathname.split("/")[2];
   const today = new Date()
@@ -62,34 +63,25 @@ const NftDetails = () => {
         prominent(nft.image, { amount: 3 , format: 'hex' }).then(clr => {
           setColor(clr);
         })
+
+        prominent(nft.image,{amount:1,format: 'hex'}).then(clr=>{
+          setDominant(clr+"65");
+        })
+      }
+      const check=()=>{
+        const filtered = nfts.filter((item) => item.id === id);
+        setNFT(filtered[0]);
       }
   useEffect(() => {
-    const filtered = nfts.filter((item) => item.id === id);
-    setNFT(filtered[0])
-    
-
-    //   nfts.map((item) => {
-    //    if (item.id === id) {
-    //      setNFT(item);
-    //    }
-    //  })
-
-    // nft.image ? getColorPallete() : {}
+    check();
     fetchData();
-  }, [id]);
-
-  // useEffect(()=>{
-
-  //   if (Object.keys(nft).length !== 0) {
-  //     getColorPallete();
-  //     setTimeout(() => {
-  //       console.log(color);
-  //     }, 5000);
-  //   }
-  //   else {
-  //     //do nothing
-  //   }
-  //   },[nft])
+  }, []);
+  useEffect(() => {
+    
+    getColorPallete()
+    
+  }, [nft]);
+  
 
   useMemo(()=>{
     response && response.data.data.values.map((e)=>{
@@ -105,7 +97,7 @@ const NftDetails = () => {
   return (
     <>
       <Navbar />
-      <div className="gradient-css-div-details h-screen checks">
+      <div className="h-full rounded-br-xl" style={{backgroundImage:`linear-gradient(to top right, #90cef400,#90cef400,${dominant}, #90cef400, #90cef400)`}}>
         <br />
         <div className="flex justify-evenly items-start">
           <div>
@@ -115,7 +107,7 @@ const NftDetails = () => {
                 src={nft.image}
                 alt={nft.title}
               />
-              <div className="p-2.5 bg-white rounded-md">
+              <div className="p-2.5 rounded-md">
                 <div className="flex flex-row justify-end">
                   <BsHeart className="inline mt-0.5 w-5 h-5" />
                   <p className="mx-2.5 -mt-1 text-xl font-normal">5</p>
@@ -127,20 +119,17 @@ const NftDetails = () => {
                 Color Pallete
               </div>
               <div className="flex flex-col py-3 px-6 justify-between h-36">
-                <div className="flex flex-row items-center">
-                  <div className="rounded-full ring-2 ring-black bg-blue-400 w-8 h-8 mr-3"></div>
-                  <p className="text-base font-medium">#60A5FA</p>
-                </div>
-
-                <div className="flex flex-row items-center">
-                  <div className="rounded-full ring-2 ring-black bg-gray-600 w-8 h-8 mr-3"></div>
-                  <p className="text-base font-medium">#4B5563</p>
-                </div>
-
-                <div className="flex flex-row items-center">
-                  <div className="rounded-full ring-2 ring-black bg-green-500 w-8 h-8 mr-3"></div>
-                  <p className="text-base font-medium">#22C55E</p>
-                </div>
+                {color ? color.map((clr) => (
+                  <div className="flex flex-row items-center">
+                    <div className="rounded-full ring-2 ring-black w-8 h-8 mr-3" style={{ backgroundColor: clr }}></div>
+                    <p className="text-base font-medium">{clr}</p>
+                  </div>
+                )) : (
+                  <div className="flex flex-row items-center">
+                    <p>Loading...</p>
+                  </div>
+                )}
+               
               </div>
             </div>
           </div>
