@@ -2,20 +2,21 @@ import React from "react";
 import Navbar from "./Navbar";
 import { NavLink } from "react-router-dom";
 import nfts from "./Data";
-import { nfts2 } from "./Data";
+import {nfts2} from "./Data";
 import Footer from "./HomeComponents/Footer";
-import posting from "../imgs/posting2.svg";
+import NotMinted from "../imgs/NotMinted.svg";
 
-const Explore = () => {
+const NotListed = () => {
+  
   return (
     <>
       <Navbar></Navbar>
       
-        {nfts2.length === 0 ? (
+        {nfts.length === 0 ? (
           <>
             <div className="flex py-10 flex-col w-full h-full">
-              <img src={posting} alt="nothing listed" className="self-center w-1/2 h-1/2" ></img>
-              <p className="self-center font-semibold mt-10 mb-5 text-gray-700 tracking-wide mx-3 lg:text-lg md: text-normal sm:text-md">No NFT listed yet!</p>
+              <img src={NotMinted} alt="nothing listed" className="self-center w-1/2 h-1/2" ></img>
+              <p className="self-center font-semibold mt-10 mb-5 text-gray-700 tracking-wide mx-3 lg:text-lg md: text-normal sm:text-md">No NFT Minted yet!</p>
             </div>
           </>
         ) : (
@@ -24,7 +25,7 @@ const Explore = () => {
             <br></br>
             <div>
               <p className="font-bold tracking-wide mx-3 lg:text-3xl md: text-2xl sm:text-xl">
-                Browse NFTs:
+                Not Listed NFTs:
               </p>
             </div>
             <div className="flex justify-center flex-wrap ">
@@ -76,4 +77,4 @@ const Explore = () => {
   );
 };
 
-export default Explore;
+export default NotListed;

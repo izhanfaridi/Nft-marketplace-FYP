@@ -50,4 +50,7 @@ const nfts = [
     },
   ];
 
+  const nfts2 =[]
+
+export {nfts2};
 export default nfts;

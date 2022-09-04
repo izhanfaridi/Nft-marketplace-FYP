@@ -2,6 +2,7 @@ import React, { useState , useEffect} from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Transition } from "@headlessui/react";
 import siteLogo from "../imgs/site-logo1.png"
+import {BiWalletAlt} from 'react-icons/bi'
 
 
 function Navbar() {
@@ -24,10 +25,16 @@ function Navbar() {
       href: '/explore',
     },
     {
-      name: 'Create',
-      description: 'Create your nft',
-      href: '/explore',
+      name: 'Minted NFTs',
+      description: 'NFTs Not Listed, but minted',
+      href: '/notListed',
     },
+    {
+      name: 'Mint',
+      description: 'Mint your nft',
+      href: '/mint',
+    }
+    
   ]
   return (
     <div>
@@ -91,11 +98,11 @@ function Navbar() {
                   ))}
 
 
-                  <Link to='/register'><button className="border-solid rounded bg-teal-500 px-3 py-1 font-medium text-white hover:bg-teal-700 ">
+                  {/* <Link to='/register'><button className="border-solid rounded bg-teal-500 px-3 py-1 font-medium text-white hover:bg-teal-700 ">
                     Sign Up
-                  </button></Link>
+                  </button></Link> */}
                   <Link to='/login'><button className="border-solid rounded bg-white px-3 py-1 font-medium text-teal-500 ring-1 ring-teal-500 hover:bg-gray-700 hover:ring-gray-800 ">
-                    Sign In
+                    Connect Wallet <BiWalletAlt className="inline mb-0.5 mx-0.5"/>
                   </button></Link>
                 </div>
               </div>
