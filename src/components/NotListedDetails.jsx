@@ -149,7 +149,7 @@ const NotListedDetails = () => {
                 List My NFT
               </button>
             </div>
-            <div className="details-div mt-5 p-1 rounded-lg ">
+            <div className="details-div mt-3 px-4 py-1 rounded-md border border-gray-400 ">
               helo
             </div>
           </div>

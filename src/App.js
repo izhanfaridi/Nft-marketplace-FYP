@@ -9,6 +9,7 @@ import NftDetails from "./components/NftDetails";
 import MintNft from "./components/MintNft";
 import NotListed from "./components/NotListed";
 import NotListedDetails from "./components/NotListedDetails";
+import Profile from "./components/Profile";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/mint" element={<MintNft></MintNft>}></Route>
         <Route path="/notListed" element={<NotListed></NotListed>}></Route>
         <Route path="/notListed/:nftId" element={<NotListedDetails/>}></Route>
+        <Route path="/profile" element={<Profile/>}></Route>
       </Routes>
     </div>
   );

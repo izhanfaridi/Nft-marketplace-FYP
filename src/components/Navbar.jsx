@@ -17,13 +17,9 @@ function Navbar() {
     {
       name: 'My Profile',
       description: 'Explore your profile',
-      href: '/explore',
+      href: '/profile',
     },
-    {
-      name: 'How To?',
-      description: 'Dont know what youre in for see this help guide',
-      href: '/explore',
-    },
+    
     {
       name: 'Minted NFTs',
       description: 'NFTs Not Listed, but minted',
